@@ -105,6 +105,15 @@
                     <span>Tables</span></a>
             </li>
 
+            @if (auth()->user()->level =="admin")
+            <li class="nav-item">
+                <a class="nav-link" href="/user">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span></a>
+            </li>
+            @endif
+
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

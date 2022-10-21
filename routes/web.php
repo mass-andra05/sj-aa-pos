@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -25,4 +26,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kasir']], function(){
     Route::get('/', function () {
         return view('dashboard');
     })->middleware('auth');
+
 });
+
+Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
+
+    Route::resource('user', UserController::class);
+});
+
+

@@ -26,11 +26,11 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                id="exampleInputUsername" name="username" placeholder="Enter Username...">
+                                                id="exampleInputUsername" name="username" placeholder="Enter Username..." required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" name="password" placeholder="Password">
+                                                id="exampleInputPassword" name="password" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
