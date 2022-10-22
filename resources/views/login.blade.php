@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-
+    @include('sweetalert::alert')
     <!-- Bootstrap core JavaScript-->
     <script src="{{ url('bt') }}/vendor/jquery/jquery.min.js"></script>
     <script src="{{ url('bt') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -53,7 +53,7 @@ class UserController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
-        return redirect('user')->with('bisa', 'Tambah Data Berhasil');
+        return redirect('user')->with('success', 'Tambah Data Berhasil!');
 
     }
     public function show(User $user)
@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $data['title'] = 'Ubah User';
+        $data['title'] = 'Edit User';
         $data['row'] = $user;
         $data['levels'] = ['admin' => 'admin', 'kasir'=>'kasir', ];
         return view('user.edit', $data);
@@ -98,7 +98,7 @@ class UserController extends Controller
         if ($request->password)
             $user->password = Hash::make($request->password);
         $user->save();
-        return redirect('user')->with('bisa', 'Ubah Data Berhasil');
+        return redirect('user')->with('success', 'Edit Data Berhasil!');
     }
 
 
@@ -111,7 +111,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect('user')->with('bisa', 'Hapus Data Berhasil');
+        return redirect('user')->with('success', 'Hapus Data Berhasil!');
     }
 
     // public function setting() {
@@ -144,14 +144,14 @@ class UserController extends Controller
 
         if (Hash::check($request->password, $user->password)) {
             if ($request->password == $request->konfirmasi_password) {
-                return redirect('profil')->with('tidakbisa','Password gagal diperbarui, tidak ada yang berubah pada kata sandi');
+                return redirect('/profil')->with('warning','Password gagal diperbarui, tidak ada yang berubah pada kata sandi');
             } else {
                 $user->password = Hash::make($request->konfirmasi_password);
                 $user->save();
-                return redirect('profil')->with('bisa','Password berhasil diperbarui');
+                return redirect('/profil')->with('success','Password berhasil diperbarui');
             }
         } else {
-            return redirect('profil')->with('tidakbisa','Password tidak cocok dengan kata sandi lama');
+            return redirect('/profil')->with('warning','Password tidak cocok dengan kata sandi lama');
         }
     }
 }

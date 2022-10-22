@@ -21,20 +21,20 @@
                             @method('patch')
                             @csrf
                             <div class="form-group">
-                                <label for="password">Old Password <span class="text-danger">*</span></label>
+                                <label for="password">Old Password  <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     id="password" name="password" required autofocus>
                                 @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group">
-                                <label for="new_password">New Password <span class="text-danger">*</span></label>
+                                <label for="password_baru">New Password  <span class="text-danger">*</span></label>
                                 <input type="password"
-                                    class="form-control @error('new_password') is-invalid @enderror"
-                                    id="new_password" name="new_password" required autofocus>
-                                @error('new_password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                    class="form-control @error('password_baru') is-invalid @enderror"
+                                    id="password_baru" name="password_baru" required autofocus>
+                                @error('password_baru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group">
-                                <label for="konfirmasi_password">Confirmation Password <span class="text-danger">*</span></label>
+                                <label for="konfirmasi_password">Confirmation Password  <span class="text-danger">*</span></label>
                                 <input type="password"
                                     class="form-control  @error('konfirmasi_password') is-invalid @enderror"
                                     id="konfirmasi_password" name="konfirmasi_password" required autofocus>

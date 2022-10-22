@@ -14,11 +14,6 @@
 </div>
 <div class="content">
     <div class="card-header">
-        @if(session()->has('bisa'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('bisa') }}
-        </div>
-        @endif
         <!-- DataTales Example -->
         <div class="card mb-4">
             <div class="card-header py-3">
@@ -83,11 +78,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if($errors->any())
-                @foreach($errors->all() as $err)
-                <p class="alert alert-danger">{{ $err }}</p>
-                @endforeach
-                @endif
                 <form action="{{ route('user.store') }}" method="POST">
                     @csrf
                     <div class="row">

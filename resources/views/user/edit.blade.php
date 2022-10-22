@@ -20,11 +20,6 @@
     <div class="card-header">
         <div class="content">
             <div class="col-lg-7">
-                @if($errors->any())
-                @foreach($errors->all() as $err)
-                <p class="alert alert-danger">{{ $err }}</p>
-                @endforeach
-                @endif
                 <form action="{{ route('user.update', $row) }}" method="POST">
                     @csrf
                     @method('PUT')
