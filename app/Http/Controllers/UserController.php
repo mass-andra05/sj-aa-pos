@@ -18,7 +18,9 @@ class UserController extends Controller
         $data['title'] = 'Data User';
         $data['levels'] = ['admin' => 'admin', 'kasir'=>'kasir',];
         $data['rows'] = User::where('name',  'like', '%' . $request->q . '%')->paginate(10);
-        return view('user.index', $data);
+        return view('user.index', $data,[
+            'title' => "Data User"
+        ]);
     }
 
     /**
@@ -124,6 +126,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function profil(){
+        return view('user.profil',[
+            'title' => "My Profile"
+        ]);
+    }
+
     public function updatePassword(Request $request, User $user)
     {
         $user = auth()->user();

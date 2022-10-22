@@ -1,28 +1,37 @@
 @extends('layouts.app')
 @section('content')
-    <div class="content"> <br>
-        <div class="card-header">
-            @if(session()->has('bisa'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('bisa') }}
+
+<div class="row page-title-header">
+    <div class="col-12">
+        <div class="page-header d-flex justify-content-between align-items-center">
+            <h3 class="page-title">{{ $title }}</h3>
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">{{ $title }}</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="card-header">
+        @if(session()->has('bisa'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('bisa') }}
+        </div>
+        @endif
+        <!-- DataTales Example -->
+        <div class="card mb-4">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary float-left">Data User</h3>
+                <button type="button" class="float-right btn btn-primary btn" onclick="getCreateUser()"
+                    data-toggle="modal" data-target="#form-user"><i class="fa fa-plus"></i> &nbsp; Add User
+                </button>
             </div>
-            @endif
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h3 class="m-0 font-weight-bold text-primary">DataTables Example</h3>
-                        </div>
-                        <div class="card-header">
-                            <button type="button" class="btn btn-primary" onclick="getCreateUser()" data-toggle="modal"
-                                data-target="#form-user">
-                                <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Kelas
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-custom" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
                                 <th>No</th>
                                 <th>Username</th>
                                 <th>Name</th>
@@ -39,13 +48,18 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->level }}</td>
                             <td>{{ $row->email }}</td>
-                            <td>
-                                <a class="btn-sm btn-primary border-0 p-2" href="{{ route('user.edit', $row) }}">Update</a>
-                                <form method="POST" action="{{ route('user.destroy', $row) }}" style="display: inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn-sm btn-danger border-0 p-2" onclick="return confirm('Yakin Akan Dihapus?')">Hapus</button>
-                                </form>
+                            <td class="budget">
+                                <span class="d-flex">
+                                    <a class="btn btn-circle btn-primary border-0 p-2"
+                                        href="{{ route('user.edit', $row) }}"><i class="fas fa-pen"></i></a>&nbsp;
+                                    <form method="POST" action="{{ route('user.destroy', $row) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <span class="btn btn-circle btn-danger border-0 p-2"
+                                            onclick="return confirm('Yakin Akan Dihapus?')"><i
+                                                class="fas fa-trash"></i></span>
+                                    </form>
+                                </span>
                             </td>
                         </tr>
                         @endforeach
@@ -60,10 +74,10 @@
 <!-- Extra large modal -->
 <div class="modal fade bd-example-modal-md" id="form-user" tabindex="-1" role="dialog"
     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="judul">TAMBAH DATA USER</h4>
+                <h4 class="modal-title" id="judul">Add User</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -109,9 +123,10 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button class="btn btn-primary">Simpan</button>
-                            <a class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Kembali</a>
+                            <button class="btn btn-primary">Save</button>
+                            <a class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Back</a>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>

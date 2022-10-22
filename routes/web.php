@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kasir']], function(){
         return view('dashboard');
     })->middleware('auth');
 
+    route::get('/profil',[UserController::class,'profil'])->name('profil');   
+    Route::patch('/update-password', [UserController::class,'updatePassword'])->name('update-password'); 
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
