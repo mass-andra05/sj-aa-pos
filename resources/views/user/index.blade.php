@@ -1,17 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="row page-title-header">
-    <div class="col-12">
-        <div class="page-header d-flex justify-content-between align-items-center">
-            <h3 class="page-title">{{ $title }}</h3>
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active">{{ $title }}</li>
-            </ol>
-        </div>
-    </div>
-</div>
 <div class="content">
     <div class="card-header">
         <!-- DataTales Example -->
@@ -65,7 +53,6 @@
     </div>
 </div>
 
-
 <!-- Extra large modal -->
 <div class="modal fade bd-example-modal-md" id="form-user" tabindex="-1" role="dialog"
     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -112,10 +99,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="modal-footer justify-content-between">
-                            <button class="btn btn-primary">Save</button>
-                            <a class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Back</a>
-                        </div>
+                    </div>
+                    <div class="modal-footer right-content-between">
+                        <button class="btn btn-primary">Save</button>
+                        <a class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Back</a>
                     </div>
                 </form>
             </div>

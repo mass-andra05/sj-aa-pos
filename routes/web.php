@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kasir']], function(){
 Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
 
     Route::resource('user', UserController::class);
+    
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+    Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 });
 
 
